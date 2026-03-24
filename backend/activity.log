@@ -1,0 +1,341 @@
+2025-09-02 19:18 | user: bagas31@gmail.com | create ikan | A, qty 0
+2025-09-02 19:18 | user: bagas31@gmail.com | update ikan | B diupdate: {'species': 'B', 'size': '4 - 5 CM', 'avg_weight': 20.0, 'quantity': 0, 'price_per_kg': 5000.0}
+2025-09-02 19:18 | user: bagas31@gmail.com | update ikan | B diupdate: {'species': 'B', 'size': '4 - 5 CM', 'avg_weight': 200.0, 'quantity': 0, 'price_per_kg': 5000.0}
+2025-09-02 19:18 | user: bagas31@gmail.com | delete ikan | B dihapus
+2025-09-02 19:38 | user: bagas31@gmail.com | create ikan | A, qty 0
+2025-09-02 19:39 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '6 - 7 CM', 'avg_weight': 290.0, 'quantity': 0, 'price_per_kg': 5000.0}
+2025-09-02 19:47 | user: bagas31@gmail.com | create ikan | Benih, qty 0
+2025-09-02 20:19 | user: bagas31@gmail.com | delete ikan | A dihapus
+2025-09-02 20:19 | user: bagas31@gmail.com | delete ikan | A dihapus
+2025-09-02 20:21 | user: bagas31@gmail.com | update ikan | Benih diupdate: {'species': 'Benih', 'size': '4 - 5 CM', 'avg_weight': 32.0, 'quantity': 1000, 'price_per_kg': 2000.0}
+2025-09-02 20:21 | user: bagas31@gmail.com | update ikan | Benih diupdate: {'species': 'Benih', 'size': '4 - 5 CM', 'avg_weight': 32.0, 'quantity': 1000, 'price_per_kg': 2000.0}
+2025-09-02 20:22 | user: bagas31@gmail.com | update ikan | Benih diupdate: {'species': 'Benih', 'size': '4 - 5 CM', 'avg_weight': 32.0, 'quantity': 1000, 'price_per_kg': 2000.0}
+2025-09-02 20:29 | user: bagas31@gmail.com | update ikan | Benih diupdate: {'species': 'Benih', 'size': '4 - 5 CM', 'avg_weight': 32.0, 'quantity': 1000, 'price_per_kg': 2000.0, 'tanggal': datetime.date(2025, 9, 2)}
+2025-09-02 20:50 | user: bagas31@gmail.com | update ikan | Benih diupdate: {'species': 'Benih', 'size': '6 - 7 CM', 'avg_weight': 32.0, 'quantity': None, 'price_per_kg': 2000.0, 'tanggal': datetime.date(2025, 9, 2)}
+2025-09-02 20:50 | user: bagas31@gmail.com | update ikan | Benih diupdate: {'species': 'Benih', 'size': '4 - 5 CM', 'avg_weight': 32.0, 'quantity': None, 'price_per_kg': 2000.0, 'tanggal': datetime.date(2025, 9, 2)}
+2025-09-02 20:52 | user: bagas31@gmail.com | update ikan | Benih Lele diupdate: {'species': 'Benih Lele', 'size': '4 - 5 CM', 'avg_weight': 32.0, 'quantity': None, 'price_per_kg': 2000.0, 'tanggal': datetime.date(2025, 9, 2)}
+2025-09-02 20:57 | user: bagas31@gmail.com | create ikan | A, qty 10
+2025-09-02 21:05 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 12
+2025-09-02 21:05 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 10
+2025-09-02 21:09 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 12
+2025-09-02 21:09 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 10
+2025-09-02 21:09 | user: bagas31@gmail.com | delete ikan | A dihapus
+2025-09-02 21:09 | user: bagas31@gmail.com | create ikan | a, qty 2
+2025-09-02 21:09 | user: bagas31@gmail.com | delete ikan | a dihapus
+2025-09-02 21:12 | user: bagas31@gmail.com | create ikan | A, qty 10
+2025-09-02 21:12 | user: bagas31@gmail.com | delete ikan | A dihapus
+2025-09-02 21:16 | user: bagas31@gmail.com | create ikan | A, qty 2
+2025-09-02 21:17 | user: bagas31@gmail.com | delete ikan | A dihapus
+2025-09-02 21:19 | user: bagas31@gmail.com | create ikan | A, qty 2
+2025-09-02 21:19 | user: bagas31@gmail.com | delete ikan | A dihapus
+2025-09-04 18:21 | user: bagas31@gmail.com | create ikan | Lele Pendederan, qty 2000
+2025-09-04 18:21 | user: bagas31@gmail.com | update quantity ikan | Benih Lele baru qty: 3000
+2025-09-08 21:07 | user: bagas31@gmail.com | create ikan | A, qty 3
+2025-09-09 19:43 | user: bagas31@gmail.com | add fish | Lele Pendederan masuk kolam Kolam A, qty 2
+2025-09-09 19:49 | user: bagas31@gmail.com | add fish | Benih Lele masuk kolam Kolam C, qty 20
+2025-09-09 19:56 | user: bagas31@gmail.com | create kolam | A
+2025-09-09 19:57 | user: bagas31@gmail.com | create kolam | B
+2025-09-09 20:43 | user: bagas31@gmail.com | add fish | A masuk kolam B, qty 3
+2025-09-09 20:44 | user: bagas31@gmail.com | create ikan | A, qty 1000
+2025-09-09 21:02 | user: bagas31@gmail.com | add fish | A masuk kolam A, qty 2
+2025-09-09 21:10 | user: bagas31@gmail.com | create ikan | A, qty 22
+2025-09-09 21:10 | user: bagas31@gmail.com | create kolam | C
+2025-09-09 21:13 | user: bagas31@gmail.com | add fish | A masuk kolam C, qty 1
+2025-09-09 21:14 | user: bagas31@gmail.com | create kolam | D
+2025-09-09 21:14 | user: bagas31@gmail.com | add fish | A masuk kolam D, qty 20
+2025-09-09 21:24 | user: bagas31@gmail.com | create kolam | A
+2025-09-09 21:26 | user: bagas31@gmail.com | add fish | A masuk kolam A, qty 1
+2025-09-09 22:06 | user: bagas31@gmail.com | create ikan | B, qty 222
+2025-09-10 21:12 | user: bagas31@gmail.com | create kolam | B
+2025-09-10 21:17 | user: bagas31@gmail.com | add fish | B masuk kolam B, qty 2
+2025-09-10 22:16 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 2
+2025-09-10 23:29 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam B
+2025-09-10 23:37 | user: bagas31@gmail.com | mortality | 12 ikan mati di kolam B
+2025-09-11 21:01 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam B
+2025-09-11 21:06 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam B
+2025-09-11 21:06 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam B
+2025-09-11 21:06 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam A
+2025-09-11 21:14 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam B
+2025-09-11 21:21 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam B
+2025-09-11 22:49 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam B
+2025-09-11 23:45 | user: bagas31@gmail.com | create kolam | A
+2025-09-11 23:49 | user: bagas31@gmail.com | update kolam | Kolam lele 1
+2025-09-12 18:42 | user: bagas31@gmail.com | update ikan | Ikan Benih diupdate: {'species': 'Ikan Benih', 'size': '6 - 7 CM', 'avg_weight': 22.0, 'quantity': None, 'price_per_kg': 2222.0, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-12 18:43 | user: bagas31@gmail.com | add fish | Ikan Benih masuk kolam Kolam lele 1, qty 20
+2025-09-12 18:45 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam Kolam lele 1
+2025-09-12 18:45 | user: bagas31@gmail.com | mortality | 3 ikan mati di kolam Kolam lele 1
+2025-09-14 00:13 | user: bagas31@gmail.com | create reference_jenis_kolam | Terpal
+2025-09-14 00:35 | user: bagas31@gmail.com | update reference_jenis_kolam | 1 -> Terpal1
+2025-09-14 00:35 | user: bagas31@gmail.com | update reference_jenis_kolam | 1 -> Terpal
+2025-09-14 00:35 | user: bagas31@gmail.com | create reference_jenis_kolam | A
+2025-09-14 00:35 | user: bagas31@gmail.com | delete reference_jenis_kolam | 2 -> A
+2025-09-14 00:43 | user: bagas31@gmail.com | create reference_ukuran_ikan | A
+2025-09-14 00:43 | user: bagas31@gmail.com | update reference_ukuran_ikan | 1 -> 2 - 3 CM
+2025-09-14 00:47 | user: bagas31@gmail.com | update reference_ukuran_ikan | 1 -> 2 - 3 CM
+2025-09-14 00:47 | user: bagas31@gmail.com | update reference_ukuran_ikan | 1 -> 2 - 3 CM
+2025-09-14 00:47 | user: bagas31@gmail.com | create reference_ukuran_ikan | a
+2025-09-14 00:47 | user: bagas31@gmail.com | delete reference_ukuran_ikan | 2 -> a
+2025-09-14 00:47 | user: bagas31@gmail.com | create reference_aktivitas_kolam | Pemberian Pakan
+2025-09-14 00:47 | user: bagas31@gmail.com | update reference_aktivitas_kolam | 1 -> Pemberian Pakan
+2025-09-14 00:47 | user: bagas31@gmail.com | update reference_aktivitas_kolam | 1 -> Pemberian Pakan  1
+2025-09-14 00:47 | user: bagas31@gmail.com | update reference_aktivitas_kolam | 1 -> Pemberian Pakan
+2025-09-14 00:47 | user: bagas31@gmail.com | create reference_aktivitas_kolam | A
+2025-09-14 00:47 | user: bagas31@gmail.com | delete reference_aktivitas_kolam | 2 -> A
+2025-09-14 00:48 | user: bagas31@gmail.com | create reference_status_kolam_ikan | Kosong
+2025-09-14 00:48 | user: bagas31@gmail.com | update reference_status_kolam_ikan | 1 -> Pemeliharaan
+2025-09-14 00:48 | user: bagas31@gmail.com | delete reference_status_kolam_ikan | 1 -> Pemeliharaan
+2025-09-14 10:09 | user: bagas31@gmail.com | create reference_ukuran_ikan | 3 - 4 CM
+2025-09-14 10:15 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 4
+2025-09-14 10:15 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 2
+2025-09-14 10:16 | user: bagas31@gmail.com | create reference_jenis_kolam | Galian
+2025-09-14 10:17 | user: bagas31@gmail.com | update quantity ikan | Ikan Benih baru qty: 0
+2025-09-14 10:17 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 0
+2025-09-14 10:24 | user: bagas31@gmail.com | update quantity ikan | Ikan Benih baru qty: 2
+2025-09-14 11:59 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': None, 'price_per_kg': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:00 | user: bagas31@gmail.com | update ikan | Ikan Benih diupdate: {'species': 'Ikan Benih', 'size': '3 - 4 CM', 'avg_weight': 22.0, 'quantity': None, 'price_per_kg': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:13 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': None, 'price_per_kg': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:14 | user: bagas31@gmail.com | update ikan | Ikan Benih diupdate: {'species': 'Ikan Benih', 'size': '3 - 4 CM', 'avg_weight': 22.0, 'quantity': None, 'price_per_kg': 4000.0, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:19 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': None, 'price_per_kg': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:19 | user: bagas31@gmail.com | update quantity ikan | Ikan Benih baru qty: 4
+2025-09-14 12:19 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 2
+2025-09-14 12:19 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': None, 'price_per_kg': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:23 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': None, 'price_per_kg': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:24 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': 0, 'price_per_kg': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:30 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': 0, 'price_per_kg': 0.0, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:33 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': 0, 'price_per_kg': 0.0, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:35 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': 0, 'price_per_kg': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:38 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': 0, 'price_per_kg': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 12:41 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': 0, 'price_per_kg': None, 'price_per_unit': 2000.0, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 13:56 | user: bagas31@gmail.com | update ikan | Ikan Benih diupdate: {'species': 'Ikan Benih', 'size': '3 - 4 CM', 'avg_weight': 22.0, 'quantity': 4, 'price_per_kg': 5000.0, 'price_per_unit': None, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 13:56 | user: bagas31@gmail.com | update ikan | A diupdate: {'species': 'A', 'size': '2 - 3 CM', 'avg_weight': 3.0, 'quantity': 0, 'price_per_kg': None, 'price_per_unit': 3000.0, 'tanggal': datetime.date(2025, 9, 9)}
+2025-09-14 14:13 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 2
+2025-09-14 14:54 | user: bagas31@gmail.com | create kolam | C
+2025-09-14 14:55 | user: bagas31@gmail.com | add fish | Ikan Benih masuk kolam C, qty 2
+2025-09-14 15:56 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 4
+2025-09-14 15:57 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 6
+2025-09-14 15:57 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 8
+2025-09-14 16:00 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 13
+2025-09-14 16:01 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 8
+2025-09-16 20:03 | user: bagas31@gmail.com | create reference_ukuran_ikan | LBG
+2025-09-16 20:08 | user: bagas31@gmail.com | create kolam | G
+2025-09-17 19:52 | user: bagas31@gmail.com | create ikan | B, qty 400
+2025-09-17 21:10 | user: bagas31@gmail.com | create ikan | Benih, qty 245
+2025-09-17 21:11 | user: bagas31@gmail.com | update quantity ikan | Ikan Benih baru qty: 302
+2025-09-17 22:28 | user: bagas31@gmail.com | add fish | Ikan Benih masuk kolam G, qty 20
+2025-09-17 23:07 | user: bagas31@gmail.com | create kolam | F
+2025-09-17 23:07 | user: bagas31@gmail.com | add fish | B masuk kolam F, qty 200, total_kg 10.0
+2025-09-17 23:11 | user: bagas31@gmail.com | create kolam | Test
+2025-09-17 23:11 | user: bagas31@gmail.com | add fish | Ikan Benih masuk kolam Test, qty 82, total_kg 6.397
+2025-09-17 23:45 | user: bagas31@gmail.com | tambah berat kolam | Kolam Test bertambah 0.32 kg
+2025-09-17 23:45 | user: bagas31@gmail.com | tambah berat kolam | Kolam Test bertambah 0.336 kg
+2025-09-17 23:52 | user: bagas31@gmail.com | tambah berat kolam | Kolam Test bertambah 0.353 kg
+2025-09-17 23:54 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam Test
+2025-09-17 23:54 | user: bagas31@gmail.com | mortality | 20 ikan mati di kolam Test
+2025-09-17 23:55 | user: bagas31@gmail.com | tambah berat kolam | Kolam Test bertambah 0.37 kg
+2025-09-18 00:03 | user: bagas31@gmail.com | create kolam | TES2
+2025-09-18 20:52 | user: bagas31@gmail.com | add fish | B masuk kolam TES2, qty 20, total_kg 1.0
+2025-09-18 21:54 | user: bagas31@gmail.com | tambah berat kolam | Kolam TES2 bertambah 0.05 kg
+2025-09-18 21:54 | user: bagas31@gmail.com | tambah berat kolam | Kolam TES2 bertambah 0.053 kg
+2025-09-18 21:54 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam TES2
+2025-09-18 22:45 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam TES2
+2025-09-18 22:55 | user: bagas31@gmail.com | create kolam | Tes 3
+2025-09-18 22:56 | user: bagas31@gmail.com | update quantity ikan | Benih baru qty: 345
+2025-09-18 22:57 | user: bagas31@gmail.com | add fish | Benih masuk kolam Tes 3, qty 150, total_kg 2.174
+2025-09-18 23:52 | user: bagas31@gmail.com | tambah berat kolam | Kolam Tes 3 bertambah 0.009 kg
+2025-09-18 23:52 | user: bagas31@gmail.com | tambah berat kolam | Kolam Tes 3 bertambah 0.009 kg
+2025-09-18 23:53 | user: bagas31@gmail.com | create kolam | Kosong
+2025-09-21 19:07 | user: bagas31@gmail.com | update quantity ikan | Ikan Benih baru qty: 196
+2025-09-21 19:50 | user: bagas31@gmail.com | create kolam | X
+2025-09-21 20:07 | user: bagas31@gmail.com | add fish | X masuk kolam X, qty 2000, total_kg 4.0
+2025-09-21 20:13 | user: bagas31@gmail.com | update kolam | X
+2025-09-21 21:29 | user: bagas31@gmail.com | create kolam | A
+2025-09-21 21:32 | user: bagas31@gmail.com | add fish | B masuk kolam A, qty 1440, total_kg 24.0
+2025-09-21 21:32 | user: bagas31@gmail.com | create kolam | B
+2025-09-21 21:33 | user: bagas31@gmail.com | create kolam | C
+2025-09-21 21:35 | user: bagas31@gmail.com | tambah berat kolam | Kolam C bertambah 0.8 kg
+2025-09-21 21:45 | user: bagas31@gmail.com | create kolam | A
+2025-09-21 22:07 | user: bagas31@gmail.com | add fish | A masuk kolam A, qty 30, total_kg 6.0
+2025-09-21 22:08 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 1.0 kg
+2025-09-21 23:34 | user: bagas31@gmail.com | tambah berat kolam | Kolam C bertambah 1.0 kg
+2025-09-21 23:35 | user: bagas31@gmail.com | tambah berat kolam | Kolam C bertambah 3.0 kg
+2025-09-22 00:00 | user: bagas31@gmail.com | update quantity ikan | B baru qty: 10000
+2025-09-22 00:00 | user: bagas31@gmail.com | update quantity ikan | A baru qty: 2500
+2025-09-22 23:53 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam A
+2025-09-22 23:54 | user: bagas31@gmail.com | update reference_jenis_kolam | 3 -> Kotak
+2025-09-22 23:54 | user: bagas31@gmail.com | update reference_jenis_kolam | 1 -> Lingkaran
+2025-09-22 23:59 | user: bagas31@gmail.com | update kolam | A
+2025-09-22 23:59 | user: bagas31@gmail.com | update kolam | A
+2025-09-22 23:59 | user: bagas31@gmail.com | update kolam | B
+2025-09-22 23:59 | user: bagas31@gmail.com | update kolam | C
+2025-09-23 00:07 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.2 kg
+2025-09-23 19:02 | user: bagas31@gmail.com | tambah berat kolam | Kolam B bertambah 0.35 kg
+2025-09-23 19:03 | user: bagas31@gmail.com | add fish | B masuk kolam A, qty 525, total_kg 15.0
+2025-09-23 19:14 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.75 kg
+2025-09-23 19:14 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.788 kg
+2025-09-23 20:14 | user: bagas31@gmail.com | add fish | B masuk kolam A, qty 250, total_kg 7.143
+2025-09-23 20:15 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.357 kg
+2025-09-23 20:15 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 2.0 kg
+2025-09-23 20:18 | user: bagas31@gmail.com | create kolam | Z
+2025-09-23 20:58 | user: bagas31@gmail.com | tambah berat kolam | Kolam C bertambah 0.4 kg
+2025-09-23 21:06 | user: bagas31@gmail.com | tambah berat kolam | Kolam C bertambah 0.42 kg
+2025-09-24 18:19 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam A
+2025-09-24 18:45 | user: bagas31@gmail.com | create kolam | D
+2025-09-24 18:45 | user: bagas31@gmail.com | create kolam | G
+2025-09-24 18:45 | user: bagas31@gmail.com | create kolam | S
+2025-09-27 19:43 | user: bagas31@gmail.com | create reference_ukuran_ikan | 5 - 6 CM
+2025-09-27 19:56 | user: bagas31@gmail.com | create kolam | Kolam 30
+2025-09-27 19:59 | user: bagas31@gmail.com | add fish | C masuk kolam Kolam 30, qty 250, total_kg 4.167
+2025-09-27 20:00 | user: bagas31@gmail.com | tambah berat kolam | Kolam Kolam 30 bertambah 0.208 kg
+2025-09-27 20:01 | user: bagas31@gmail.com | tambah berat kolam | Kolam Kolam 30 bertambah 0.1 kg
+2025-09-27 20:02 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam Kolam 30
+2025-09-27 20:02 | user: bagas31@gmail.com | mortality | 5 ikan mati di kolam Kolam 30
+2025-09-27 20:03 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam C
+2025-09-27 20:04 | user: bagas31@gmail.com | tambah berat kolam | Kolam C bertambah 0.441 kg
+2025-09-29 20:59 | user: bagas31@gmail.com | add fish | A masuk kolam B, qty 100, total_kg 2.0
+2025-10-20 18:35 | user: bagas31@gmail.com | create reference_ukuran_ikan | Nila LBG
+2025-10-20 18:36 | user: bagas31@gmail.com | create reference_ukuran_ikan | Nila 1 - 2 CM
+2025-10-20 21:38 | user: bagas31@gmail.com | create reference_ukuran_ikan | Nila 2 - 3 CM
+2025-10-21 17:58 | user: bagas31@gmail.com | delete reference_ukuran_ikan | 5 -> 5 - 6 CM
+2025-10-21 17:58 | user: bagas31@gmail.com | delete reference_ukuran_ikan | 3 -> 3 - 4 CM
+2025-10-21 17:58 | user: bagas31@gmail.com | delete reference_ukuran_ikan | 1 -> 2 - 3 CM
+2025-10-21 17:58 | user: bagas31@gmail.com | delete reference_ukuran_ikan | 4 -> LBG
+2025-10-21 17:59 | user: bagas31@gmail.com | update reference_ukuran_ikan | 7 -> Nila 1 - 2 CM
+2025-10-21 18:17 | user: bagas31@gmail.com | add fish | A masuk kolam G, qty 400, total_kg 8.0
+2025-10-21 18:17 | user: bagas31@gmail.com | add fish | F masuk kolam D, qty 10, total_kg 5.0
+2025-10-21 20:00 | user: bagas31@gmail.com | update quantity ikan | F baru qty: 4000
+2025-10-21 20:00 | user: bagas31@gmail.com | update quantity ikan | F baru qty: 3550
+2025-10-21 20:01 | user: bagas31@gmail.com | update quantity ikan | F baru qty: 0
+2025-10-21 20:44 | user: bagas31@gmail.com | tambah berat kolam | Kolam G bertambah 0.24 kg
+2025-10-21 20:58 | user: bagas31@gmail.com | tambah berat kolam | Kolam G bertambah 0.247 kg
+2025-10-21 21:09 | user: bagas31@gmail.com | tambah berat kolam | Kolam G bertambah 0.339 kg
+2025-10-21 21:09 | user: bagas31@gmail.com | tambah berat kolam | Kolam G bertambah 0.441 kg
+2025-10-21 21:10 | user: bagas31@gmail.com | tambah berat kolam | Kolam G bertambah 0.463 kg
+2025-10-22 20:12 | user: bagas31@gmail.com | tambah berat kolam | Kolam G bertambah 0.487 kg
+2025-10-22 20:12 | user: bagas31@gmail.com | tambah berat kolam | Kolam G bertambah 0.01 kg
+2025-10-22 20:12 | user: bagas31@gmail.com | tambah berat kolam | Kolam G bertambah 0.06 kg
+2025-10-22 20:44 | user: bagas31@gmail.com | tambah berat kolam | Kolam G bertambah 0.309 kg
+2025-10-22 20:59 | user: bagas31@gmail.com | tambah berat kolam | Kolam D bertambah 0.2 kg
+2025-10-22 20:59 | user: bagas31@gmail.com | tambah berat kolam | Kolam D bertambah 0.1 kg
+2025-10-22 21:08 | user: bagas31@gmail.com | update reference_jenis_kolam | 1 -> Bulat
+2025-10-22 21:27 | user: bagas31@gmail.com | create kolam | ABC
+2025-10-22 21:27 | user: bagas31@gmail.com | update kolam | ABC
+2025-10-22 21:28 | user: bagas31@gmail.com | update kolam | ABC
+2025-10-22 21:29 | user: bagas31@gmail.com | create reference_jenis_kolam | Bulat salkdopajfiopasejf askofhjqawio
+2025-10-22 21:29 | user: bagas31@gmail.com | create kolam | X
+2025-10-22 21:34 | user: bagas31@gmail.com | tambah berat kolam | Kolam D bertambah 0.7 kg
+2025-10-22 21:50 | user: bagas31@gmail.com | add fish | Nila - Dumbo masuk kolam C, qty 1000, total_kg 100.0
+2025-10-22 21:51 | user: bagas31@gmail.com | tambah berat kolam | Kolam C bertambah 3.0 kg
+2025-10-23 18:09 | user: bagas31@gmail.com | update quantity ikan | Nila - Dumbo baru qty: 25000
+2025-10-23 18:17 | user: bagas31@gmail.com | update quantity ikan | Nila - Dumbo baru qty: 26320
+2025-10-23 18:17 | user: bagas31@gmail.com | update quantity ikan | C baru qty: 174
+2025-10-23 18:17 | user: bagas31@gmail.com | update quantity ikan | C baru qty: 178
+2025-10-23 18:30 | user: bagas31@gmail.com | update quantity ikan | Nila - Dumbo baru qty: 26700
+2025-10-23 18:31 | user: bagas31@gmail.com | update quantity ikan | F baru qty: 3000
+2025-10-23 18:31 | user: bagas31@gmail.com | update quantity ikan | Nila - Nila - Dumbo baru qty: 15250
+2025-10-23 18:31 | user: bagas31@gmail.com | update quantity ikan | Nila - Nila - Dumbo baru qty: 40250
+2025-10-23 18:33 | user: bagas31@gmail.com | update quantity ikan | F baru qty: 3040
+2025-10-23 18:33 | user: bagas31@gmail.com | update quantity ikan | Nila - B baru qty: 600
+2025-10-23 18:38 | user: bagas31@gmail.com | update quantity ikan | Nila - Nila - Dumbo baru qty: 40290
+2025-10-23 18:38 | user: bagas31@gmail.com | update quantity ikan | Nila - Nila - Dumbo baru qty: 40690
+2025-10-23 18:40 | user: bagas31@gmail.com | add fish | Nila - Dumbo masuk kolam ABC, qty 200, total_kg 0.133
+2025-10-23 18:41 | user: bagas31@gmail.com | add fish | A masuk kolam ABC, qty 100, total_kg 2.0
+2025-10-23 19:09 | user: bagas31@gmail.com | add fish | Nila - Dumbo masuk kolam A, qty 20, total_kg 0.013
+2025-10-23 20:41 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 1.0 kg
+2025-10-25 18:02 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam B
+2025-10-25 18:02 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.84 kg
+2025-10-25 18:02 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 1.0 kg
+2025-10-25 18:03 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam A
+2025-10-25 18:03 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam A
+2025-10-25 18:03 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam A
+2025-11-23 13:12 | user: bagas31@gmail.com | update kolam | C
+2025-11-23 13:12 | user: bagas31@gmail.com | update kolam | A
+2025-11-23 15:12 | user: bagas31@gmail.com | add fish | Nila - B masuk kolam A, qty 2, total_kg 0.03333333333333333
+2025-11-23 15:13 | user: bagas31@gmail.com | add fish | C masuk kolam A, qty 2, total_kg 0.031831460674157305
+2025-11-23 15:13 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam A
+2025-11-23 15:16 | user: bagas31@gmail.com | add fish | A masuk kolam B, qty 2, total_kg 0.04
+2025-11-23 15:17 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam B
+2025-11-23 15:38 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam A
+2025-11-23 15:42 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.1 kg
+2025-11-23 15:57 | user: bagas31@gmail.com | add fish | C masuk kolam A, qty 2, total_kg 0.031831477272727275
+2025-11-23 16:00 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam A
+2025-11-23 16:00 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam ABC
+2025-11-23 16:44 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.022 kg
+2025-11-23 16:45 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.023 kg
+2025-11-23 16:45 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.024 kg
+2025-11-23 17:53 | user: bagas31@gmail.com | mortality | 3 ikan mati di kolam A
+2025-11-23 17:59 | user: bagas31@gmail.com | mortality | 10 ikan mati di kolam D
+2025-11-23 18:01 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam A
+2025-11-23 18:27 | user: bagas31@gmail.com | add fish | A masuk kolam A, qty 2, total_kg 0.04
+2025-11-23 18:28 | user: bagas31@gmail.com | add fish | A masuk kolam A, qty 2, total_kg 0.04
+2025-11-23 18:28 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam A
+2025-11-23 18:57 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.432 kg
+2025-11-23 19:48 | user: bagas31@gmail.com | add fish | A masuk kolam A, qty 2, total_kg 0.04
+2025-11-23 19:49 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam A
+2025-11-23 19:49 | user: bagas31@gmail.com | add fish | A masuk kolam A, qty 2, total_kg 0.04000000000000001
+2025-11-23 21:16 | user: bagas31@gmail.com | create reference_jenis_kolam | Bulat
+2025-11-23 21:16 | user: bagas31@gmail.com | create reference_ukuran_ikan | Lele LBG
+2025-11-23 21:17 | user: bagas31@gmail.com | update reference_ukuran_ikan | 1 -> Lele LBG
+2025-11-23 21:43 | user: bagas31@gmail.com | create kolam | ABC
+2025-11-23 21:43 | user: bagas31@gmail.com | add fish | Lele - ABC masuk kolam ABC, qty 2, total_kg 0.1
+2025-11-23 21:53 | user: bagas31@gmail.com | tambah berat kolam | Kolam ABC bertambah 0.004 kg
+2025-11-23 21:54 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam ABC
+2025-11-23 21:54 | user: bagas31@gmail.com | create kolam | A
+2025-11-23 21:54 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam ABC
+2025-11-23 21:54 | user: bagas31@gmail.com | add fish | Lele - ABC masuk kolam ABC, qty 50, total_kg 2.4999999999999996
+2025-11-23 22:26 | user: bagas31@gmail.com | tambah berat kolam | Kolam ABC bertambah 2.0 kg
+2025-11-23 22:33 | user: bagas31@gmail.com | tambah berat kolam | Kolam ABC bertambah 0.22 kg
+2025-11-23 22:35 | user: bagas31@gmail.com | mortality | 26 ikan mati di kolam ABC
+2025-11-23 22:42 | user: bagas31@gmail.com | tambah berat kolam | Kolam ABC bertambah 5.0 kg
+2025-11-23 22:45 | user: bagas31@gmail.com | tambah berat kolam | Kolam ABC bertambah 0.298 kg
+2025-11-24 19:30 | user: bagas31@gmail.com | create kolam | C
+2025-11-24 19:30 | user: bagas31@gmail.com | tambah berat kolam | Kolam A bertambah 0.048 kg
+2025-11-24 19:31 | user: bagas31@gmail.com | mortality | 1 ikan mati di kolam C
+2025-11-24 20:05 | user: bagas31@gmail.com | create kolam | X
+2025-11-24 20:10 | user: bagas31@gmail.com | create kolam | AX
+2026-02-08 10:12 | user: bagas31@gmail.com | create reference_ukuran_ikan | Lele 2-3
+2026-02-08 10:20 | user: bagas31@gmail.com | create kolam | Kolam1
+2026-02-08 10:21 | user: bagas31@gmail.com | add fish | Lele - ABC masuk kolam Kolam1, qty 20, total_kg 0.9999999999999999
+2026-02-08 10:24 | user: bagas31@gmail.com | tambah berat kolam | Kolam Kolam1 bertambah 0.05 kg
+2026-02-08 10:26 | user: bagas31@gmail.com | mortality | 2 ikan mati di kolam Kolam1
+2026-02-11 15:04 | user: reino | update quantity ikan | Lele - ABC baru qty: 348
+2026-02-11 15:04 | user: reino | update quantity ikan | Lele - ABC baru qty: 351
+2026-02-11 15:10 | user: reino | create reference_jenis_kolam | Kolam Lele
+2026-02-11 15:10 | user: reino | create kolam | Kolam Lele 1
+2026-02-11 15:10 | user: reino | update kolam | Kolam Lele 1
+2026-02-11 15:12 | user: reino | create reference_ukuran_ikan | Lele 30 cm
+2026-02-11 15:16 | user: reino | add fish | Lele - Lele Kerdil masuk kolam Kolam Lele 1, qty 3, total_kg 1.0
+2026-02-11 15:29 | user: reino | tambah berat kolam | Kolam Kolam Lele 1 bertambah 0.03 kg
+2026-02-11 15:30 | user: reino | tambah berat kolam | Kolam Kolam Lele 1 bertambah 0.052 kg
+2026-02-11 15:30 | user: reino | tambah berat kolam | Kolam Kolam Lele 1 bertambah 0.054 kg
+2026-02-11 15:32 | user: reino | create kolam | kolam lele baru
+2026-02-11 15:33 | user: reino | tambah berat kolam | Kolam Kolam Lele 1 bertambah 0.057 kg
+2026-02-12 21:44 | user: reino | update quantity ikan | Lele - Lele Kerdil baru qty: 15
+2026-02-12 21:45 | user: reino | add fish | Lele - Lele Kerdil masuk kolam Kolam Lele 1, qty 15, total_kg 0
+2026-02-16 20:43 | user: reino | update quantity ikan | Lele - Lele Kerdil baru qty: 10
+2026-02-19 14:10 | user: reino | mortality | 4 ikan mati di kolam Kolam Lele 1
+2026-02-19 14:11 | user: reino | update kolam | Kolam Lele 1
+2026-02-19 14:11 | user: reino | add fish | Lele - Lele Kerdil masuk kolam Kolam Lele 1, qty 3, total_kg 0
+2026-02-19 14:12 | user: reino | mortality | 1 ikan mati di kolam Kolam Lele 1
+2026-02-19 14:12 | user: reino | add fish | Lele - Lele Kerdil masuk kolam Kolam Lele 1, qty 3, total_kg 0
+2026-02-19 14:12 | user: reino | mortality | 1 ikan mati di kolam Kolam Lele 1
+2026-02-19 14:13 | user: reino | add fish | Lele - Lele Kerdil masuk kolam Kolam Lele 1, qty 3, total_kg 0
+2026-02-19 14:19 | user: reino | mortality | 1 ikan mati di kolam Kolam Lele 1
+2026-02-19 14:19 | user: reino | add fish | Lele masuk kolam Kolam Lele 1, qty 5, total_kg 1.6666666666666665
+2026-02-19 14:19 | user: reino | mortality | 1 ikan mati di kolam Kolam Lele 1
+2026-02-19 14:21 | user: reino | mortality | 4 ikan mati di kolam Kolam Lele 1
+2026-02-19 14:21 | user: reino | add fish | Lele masuk kolam Kolam Lele 1, qty 5, total_kg 1.6666660000000002
+2026-02-19 14:22 | user: reino | mortality | 5 ikan mati di kolam Kolam Lele 1
+2026-02-19 14:23 | user: reino | add fish | Lele masuk kolam Kolam Lele 1, qty 5, total_kg 1.666665
+2026-02-19 14:23 | user: reino | tambah berat kolam | Kolam Kolam Lele 1 bertambah 1.0 kg
+2026-03-19 16:56 | user: reino | create kolam | Kolam testing
+2026-03-19 16:57 | user: reino | update kolam | Kolam testing
+2026-03-19 16:57 | user: reino | add fish | Lele masuk kolam Kolam testing, qty 10, total_kg 3.33333
+2026-03-19 22:12 | user: reino | create kolam | kolam 2
+2026-03-19 22:12 | user: reino | update quantity ikan | Lele baru qty: 20
+2026-03-19 22:12 | user: reino | update kolam | kolam 2
+2026-03-19 22:12 | user: reino | add fish | Lele masuk kolam kolam 2, qty 20, total_kg 0
+2026-03-19 22:26 | user: reino | update quantity ikan | Lele baru qty: 20
+2026-03-19 23:19 | user: reino | add fish | Lele masuk kolam Kolam Lele 1, qty 3, total_kg 0.999999
+2026-03-24 17:40 | user: reino | tambah berat kolam | Kolam Kolam Lele 1 bertambah 1.0 kg
+2026-03-24 17:41 | user: reino | mortality | 1 ikan mati di kolam Kolam Lele 1
+2026-03-24 17:41 | user: reino | tambah berat kolam | Kolam Kolam Lele 1 bertambah 1.0 kg
