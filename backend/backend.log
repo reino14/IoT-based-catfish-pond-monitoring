@@ -1,6 +1,6 @@
 INFO:     Will watch for changes in these directories: ['/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend']
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [37597] using StatReload
+INFO:     Started reloader process [40391] using StatReload
 /Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/venv/lib/python3.14/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
 * 'orm_mode' has been renamed to 'from_attributes'
   warnings.warn(message, UserWarning)
@@ -8,114 +8,88 @@ INFO:     Started reloader process [37597] using StatReload
 * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
 * 'orm_mode' has been renamed to 'from_attributes'
   warnings.warn(message, UserWarning)
-/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/app/main.py:1508: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/app/main.py:1529: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
   tipe: Optional[str] = Query(None, regex="^(penuh|parsial)$"),
-/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/app/main.py:1575: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/app/main.py:1596: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
   tipe: Optional[str] = Query(None, regex="^(penuh|parsial)$"),
-/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/app/main.py:1700: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/app/main.py:1721: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
   tipe: Optional[str] = Query(None, regex="^(penuh|parsial)$"),
-INFO:     Started server process [37600]
+INFO:     Started server process [40399]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     127.0.0.1:58876 - "OPTIONS /login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "POST /login HTTP/1.1" 401 Unauthorized
-INFO:     127.0.0.1:58876 - "POST /login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "OPTIONS /kolam-petani HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "OPTIONS /feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "OPTIONS /ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "OPTIONS /reference/ukuran-ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58881 - "OPTIONS /reference/jenis-kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58882 - "OPTIONS /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58882 - "OPTIONS /kolam-petani HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58884 - "OPTIONS /feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58880 - "GET /kolam-petani HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "GET /feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58881 - "GET /ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58881 - "OPTIONS /ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58882 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58883 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58884 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58881 - "OPTIONS /reference/ukuran-ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58880 - "GET /kolam-petani HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58883 - "OPTIONS /reference/jenis-kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58884 - "OPTIONS /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "GET /feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58881 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58883 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58880 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58882 - "GET /ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "OPTIONS /kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58884 - "OPTIONS /kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "GET /kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58881 - "GET /kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58883 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "OPTIONS /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "OPTIONS /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58880 - "GET /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "GET /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "OPTIONS /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58880 - "OPTIONS /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58876 - "GET /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58880 - "GET /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58916 - "GET /kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58917 - "GET /kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58916 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58917 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58916 - "GET /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58916 - "GET /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58917 - "GET /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58917 - "GET /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58926 - "GET /kolam-petani HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58927 - "GET /kolam-petani HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58928 - "GET /feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58931 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58929 - "GET /ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58930 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58926 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58928 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58927 - "GET /feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58931 - "GET /ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58929 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58930 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58938 - "GET /kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58938 - "GET /kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58938 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58939 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58938 - "GET /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58939 - "GET /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58938 - "GET /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58938 - "GET /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58939 - "GET /feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58938 - "GET /kolam-petani HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58940 - "GET /ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58943 - "GET /kolam-petani HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58942 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58941 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58939 - "GET /feed HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58940 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58938 - "GET /ikan HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58943 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58942 - "GET /reference/vendor HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58941 - "GET /reference/vendor HTTP/1.1" 200 OK
-WARNING:  StatReload detected changes in 'app/main.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [37600]
-/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/venv/lib/python3.14/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
-* 'orm_mode' has been renamed to 'from_attributes'
-  warnings.warn(message, UserWarning)
-/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/venv/lib/python3.14/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
-* 'allow_population_by_field_name' has been renamed to 'validate_by_name'
-* 'orm_mode' has been renamed to 'from_attributes'
-  warnings.warn(message, UserWarning)
-/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/app/main.py:1508: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
-  tipe: Optional[str] = Query(None, regex="^(penuh|parsial)$"),
-/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/app/main.py:1575: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
-  tipe: Optional[str] = Query(None, regex="^(penuh|parsial)$"),
-/Users/mekari/git/IoT-based-catfish-pond-monitoring/backend/app/main.py:1700: FastAPIDeprecationWarning: `regex` has been deprecated, please use `pattern` instead
-  tipe: Optional[str] = Query(None, regex="^(penuh|parsial)$"),
-INFO:     Started server process [39071]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
+INFO:     127.0.0.1:59556 - "GET /kolam-petani HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59558 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59560 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59559 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59557 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59556 - "GET /kolam-petani HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59561 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59558 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59560 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59559 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59557 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59556 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59577 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59576 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59575 - "GET /kolam-petani HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59578 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59579 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59577 - "GET /kolam-petani HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59580 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59576 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59578 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59579 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59575 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59577 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59582 - "GET /kolam-petani HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59584 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59583 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59585 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59586 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59582 - "GET /kolam-petani HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59584 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59586 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59585 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59583 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59582 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59584 - "OPTIONS /kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "OPTIONS /kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59586 - "GET /kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59585 - "GET /kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59583 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59582 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59584 - "OPTIONS /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "OPTIONS /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59586 - "GET /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59585 - "GET /kolam/kolam/0/panen?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59586 - "OPTIONS /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59585 - "OPTIONS /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59586 - "GET /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59585 - "GET /kolam/kolam/0/panen?page=1&per_page=10000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59591 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59595 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59596 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59592 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59594 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59593 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59595 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59591 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59596 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59592 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59595 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59593 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59594 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59591 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59595 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59593 - "GET /kolam-petani HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59591 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59594 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59599 - "GET /feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59598 - "GET /kolam-petani HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59591 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59595 - "GET /ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59594 - "GET /reference/vendor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59593 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59599 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59598 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK

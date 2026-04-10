@@ -143,7 +143,7 @@ class KolamLogResponse(BaseModel):
 class FishStockBase(BaseModel):
     species: str
     size: Optional[str] = None
-    total_kg: Optional[float] = None
+    total_kg: Optional[float] = Field(None, gt=0)
     quantity: int = 0
     price_per_kg: Optional[float] = None
     price_per_unit: Optional[float] = None

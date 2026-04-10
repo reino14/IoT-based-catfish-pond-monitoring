@@ -29,6 +29,7 @@ import {
   Snackbar,
   Divider,
   useMediaQuery,
+  MenuItem,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import EditIcon from "@mui/icons-material/Edit";
@@ -140,6 +141,7 @@ export default function Management() {
     uname: "",
     mail: "",
     pwd: "",
+    role: "petani"
   });
 
   // assign dialog
@@ -187,7 +189,7 @@ export default function Management() {
   const fetchPetani = async () => {
     try {
       setTableLoading(true);
-      const res = await axios.get(`${API_BASE}/petani`, {
+      const res = await axios.get(`${API_BASE}/users`, {
         headers: authHeader(),
       });
       setPetani(res.data || []);
@@ -236,6 +238,7 @@ export default function Management() {
       uname: p?.username || "",
       mail: p?.email || "",
       pwd: "",
+      role: p?.role || "petani"
     });
     setOpenEdit(true);
   };
@@ -252,12 +255,19 @@ export default function Management() {
       await axios.put(`${API_BASE}/petani/${selectedPetani.id}`, payload, {
         headers: authHeader(),
       });
+      
+      if (form.role !== selectedPetani.role) {
+        await axios.patch(`${API_BASE}/users/${selectedPetani.id}/role`, { role: form.role }, {
+          headers: authHeader(),
+        });
+      }
+
       setOpenEdit(false);
       await fetchPetani();
       setSnackbar({
         open: true,
         severity: "success",
-        message: "Data petani berhasil diperbarui.",
+        message: "Data user berhasil diperbarui.",
       });
     } catch (e) {
       console.error(e);
@@ -634,6 +644,7 @@ export default function Management() {
                 <TableCell width={80}>ID</TableCell>
                 <TableCell>Username</TableCell>
                 <TableCell>Email</TableCell>
+                <TableCell>Role</TableCell>
                 <TableCell>Kolam</TableCell>
                 <TableCell width={240} align="right">
                   Aksi
@@ -650,6 +661,9 @@ export default function Management() {
                     <TableCell>{p.id}</TableCell>
                     <TableCell>{p.username}</TableCell>
                     <TableCell>{p.email}</TableCell>
+                    <TableCell>
+                      <Chip size="small" label={p.role} color={p.role === 'pemilik' ? 'primary' : 'secondary'} />
+                    </TableCell>
                     <TableCell>
                       <Chip
                         size="small"
@@ -847,6 +861,17 @@ export default function Management() {
               helperText="Kosongkan jika tidak ingin mengganti password"
               fullWidth
             />
+            <TextField
+              select
+              label="Role"
+              value={form.role}
+              onChange={(e) => setForm({ ...form, role: e.target.value })}
+              fullWidth
+            >
+              <MenuItem value="petani">Petani</MenuItem>
+              <MenuItem value="pemilik">Pemilik</MenuItem>
+              <MenuItem value="admin">Admin</MenuItem>
+            </TextField>
           </Stack>
         </DialogContent>
         <DialogActions>

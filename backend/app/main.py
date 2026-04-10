@@ -195,9 +195,30 @@ def login(payload: schemas.LoginRequest, db: Session = Depends(get_db)):
     return {
         "access_token": token,
         "token_type": "bearer",
-        "role": user.role,         # <-- tambahkan koma
+        "role": user.role,
         "username": user.username
     }
+
+@app.get("/users", response_model=List[schemas.UserResponse])
+def get_users(db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
+    if current_user.role not in ["admin", "pemilik"]:
+        raise HTTPException(status_code=403, detail="Forbidden")
+    return db.query(models.User).all()
+
+class RoleUpdate(BaseModel):
+    role: str
+
+@app.patch("/users/{user_id}/role", response_model=schemas.UserResponse)
+def update_user_role(user_id: int, payload: RoleUpdate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
+    if current_user.role not in ["admin", "pemilik"]:
+        raise HTTPException(status_code=403, detail="Forbidden")
+    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User tidak ditemukan")
+    user.role = payload.role
+    db.commit()
+    db.refresh(user)
+    return user
 
 # ==========================
 # KOLAM ENDPOINTS

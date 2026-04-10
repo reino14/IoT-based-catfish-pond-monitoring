@@ -27,3 +27,4 @@ dist-ssr
 # Backends Shenanigans 
 backend/.env
 backend/__pycache__
+backend/backend.log
