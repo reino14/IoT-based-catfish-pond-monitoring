@@ -104,9 +104,9 @@ app = FastAPI(title="Budidaya Lele API (All-in-One)")
 
 # Konfigurasi logging sederhana
 logging.basicConfig(
-    filename="activity.log",       # log disimpan di file activity.log
+    filename="activity.log",
     level=logging.INFO,
-    format="%(asctime)s | user: %(user)s | %(message)s",
+    format="%(asctime)s | %(message)s",
     datefmt="%Y-%m-%d %H:%M"
 )
 
@@ -134,10 +134,12 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+    # Bcrypt limit is 72 bytes
+    return pwd_context.hash(password[:72])
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    # Bcrypt limit is 72 bytes
+    return pwd_context.verify(plain_password[:72], hashed_password)
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
     to_encode = data.copy()
