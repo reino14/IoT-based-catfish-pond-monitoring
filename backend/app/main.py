@@ -104,7 +104,7 @@ app = FastAPI(title="Budidaya Lele API (All-in-One)")
 
 # Konfigurasi logging sederhana
 logging.basicConfig(
-    filename="activity.log",
+    filename="activity.log",       # log disimpan di file activity.log
     level=logging.INFO,
     format="%(asctime)s | %(message)s",
     datefmt="%Y-%m-%d %H:%M"
