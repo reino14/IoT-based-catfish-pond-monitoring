@@ -12,7 +12,8 @@ import Management from "../pages/Management";
 import Ikan from "../pages/Ikan";
 import Finance from "../pages/Finance";
 import MasterDataReference from "../pages/MasterDataReference";
-import Panen from "../pages/Panen"; // ⬅️ IMPORT BARU
+import Panen from "../pages/Panen";
+import Profile from "../pages/Profile";
 
 export default function AppRoutes() {
   return (
@@ -21,6 +22,11 @@ export default function AppRoutes() {
         {/* Public Routes */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* Semua Role */}
+        <Route element={<PrivateRoute allowedRoles={["admin", "pemilik", "petani"]} />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
 
         {/* Dashboard untuk admin & pemilik */}
         <Route element={<PrivateRoute allowedRoles={["admin", "pemilik"]} />}>

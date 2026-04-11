@@ -1677,6 +1677,9 @@ export default function KolamDetail() {
                     </Box>
 
                     <Box mt={2} sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                      <Button variant="outlined" color="info" onClick={() => handleFormOpen('add_fish')} sx={{ mr: { md: 1 } }}>
+                        Tambah Ikan
+                      </Button>
                       <Button variant="outlined" onClick={() => handleFormOpen('pakan')} sx={{ mr: { md: 1 } }}>
                         Tambah Pakan
                       </Button>
