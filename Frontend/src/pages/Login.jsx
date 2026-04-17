@@ -16,8 +16,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import logo from "../assets/logolelelinker.png";
 import backgroundImage from "../assets/background.jpg";
-
-const API_BASE = "http://127.0.0.1:8000";
+import { api } from "../api";
 
 /* ==== decode helpers (sama seperti di Header) ==== */
 function base64UrlDecode(input) {
@@ -70,18 +69,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!res.ok) {
-        const j = await res.json().catch(() => ({}));
-        throw new Error(j.detail || "Login gagal. Periksa email & password.");
-      }
-
-      const data = await res.json(); // { access_token, token_type, role }
+      const res = await api.post("/login", { email, password });
+      const data = res.data; // { access_token, token_type, role }
       const token = data.access_token;
       const role = data.role || "petani";
       if (!token) throw new Error("Token tidak diterima dari server.");

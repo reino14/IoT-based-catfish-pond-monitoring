@@ -30,9 +30,9 @@ import Layout from '../components/Layout';
 import { useParams } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts';
 import empty from '../assets/empty.jpg';
+import { api } from '../api';
 
 const PANEN_TARGET_HARI = 75;
-const API_BASE = 'http://localhost:8000';
 
 // ✅ toleransi pembulatan kg (ekor pakai integer saja)
 const EPS_KG = 0.001;
@@ -170,17 +170,11 @@ export default function KolamDetail() {
   // 🔥 TARUH DI SINI
   const sendControl = async (newPompa, newValve) => {
     try {
-      await fetch(`${API_BASE}/kolam/control/${id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          pompa: newPompa ? 1 : 0,
-          valve: newValve ? 1 : 0,
-        }),
+      await api.post(`/kolam/control/${id}`, {
+        pompa: newPompa ? 1 : 0,
+        valve: newValve ? 1 : 0,
       });
+      fetchControl(); // Refresh state setelah kontrol
     } catch (err) {
       console.error(err);
     }
@@ -279,11 +273,8 @@ export default function KolamDetail() {
 
   const fetchAllKolams = async () => {
     try {
-      const res = await fetch(`${API_BASE}/kolam`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error('Gagal ambil daftar kolam');
-      const data = await res.json();
+      const res = await api.get(`/kolam`);
+      const data = res.data;
       const targets = (data || []).filter((k) => Number(k.id) !== Number(id));
       setAllKolams(targets);
 
@@ -303,11 +294,8 @@ export default function KolamDetail() {
         const entries = await Promise.all(
           (targets || []).map(async (k) => {
             try {
-              const r = await fetch(`${API_BASE}/kolam/${k.id}/fish`, {
-                headers: { Authorization: `Bearer ${token}` },
-              });
-              if (!r.ok) throw new Error('fail');
-              const fishes = await r.json();
+              const r = await api.get(`/kolam/${k.id}/fish`);
+              const fishes = r.data;
 
               const labelSet = new Set();
               const sizeSet = new Set();
@@ -400,12 +388,11 @@ export default function KolamDetail() {
 
   const fetchKolam = async () => {
     try {
-      const res = await fetch(`${API_BASE}/kolam/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error('Gagal fetch kolam');
-      const data = await res.json();
+      const res = await api.get(`/kolam/${id}`);
+      const data = res.data;
       setKolam(data);
+      setPompaNyala(data.pompa === 1);
+      setValveTerbuka(data.valve === 1);
     } catch (err) {
       console.error(err);
       showAlert('Gagal mengambil data kolam.');
@@ -415,12 +402,9 @@ export default function KolamDetail() {
   // Ambil feeding logs — ONLY dari endpoint pemberian-pakan/{kolam_id}
   const fetchFeedingLogs = async () => {
     try {
-      const res = await fetch(`${API_BASE}/pemberian-pakan/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error('Gagal fetch log pakan');
+      const res = await api.get(`/pemberian-pakan/${id}`);
 
-      const rows = await res.json();
+      const rows = res.data;
       const mapped = (rows || []).map((log) => {
         const dt = log.created_at ? new Date(log.created_at) : null;
         const tanggalStr = log.tanggal ? new Date(log.tanggal).toLocaleDateString() : dt ? dt.toLocaleDateString() : '-';
@@ -455,11 +439,8 @@ export default function KolamDetail() {
 
   const fetchFish = async () => {
     try {
-      const res = await fetch(`${API_BASE}/kolam/${id}/fish`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error('Gagal fetch ikan');
-      const data = await res.json();
+      const res = await api.get(`/kolam/${id}/fish`);
+      const data = res.data;
 
       const normalized = (data || []).map((it) => {
         const quantity = Number(it.quantity ?? it.jumlah_ekor ?? 0);
@@ -512,11 +493,8 @@ export default function KolamDetail() {
 
   const fetchDeathLogs = async () => {
     try {
-      const res = await fetch(`${API_BASE}/fish_mortality/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error('Gagal fetch mortalitas');
-      const data = await res.json();
+      const res = await api.get(`/fish_mortality/${id}`);
+      const data = res.data;
 
       const mapped = data.map((log) => ({
         tanggal: new Date(log.tanggal).toLocaleDateString(),
@@ -540,15 +518,9 @@ export default function KolamDetail() {
     const TEMP_MIN = 25;
     const TEMP_MAX = 32;
     try {
-      const res = await fetch(`${API_BASE}/sensor/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await api.get(`/sensor/${id}`);
 
-      if (!res.ok) {
-        throw new Error('Gagal fetch sensor');
-      }
-
-      const data = await res.json();
+      const data = res.data;
       console.log('SENSOR DATA:', data);
 
       setSensor(data);
@@ -619,28 +591,23 @@ export default function KolamDetail() {
 
   const fetchControl = async () => {
     try {
-      const res = await fetch(`${API_BASE}/kolam/control/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const data = await res.json();
-
+      const res = await api.get(`/kolam/control/${id}`);
+      const data = res.data;
       setPompaNyala(data.pompa === 1);
       setValveTerbuka(data.valve === 1);
     } catch (err) {
-      console.error(err);
+      console.error('Gagal fetch control status:', err);
     }
   };
   useEffect(() => {
     // pertama kali load
     fetchControl();
 
-    // polling tiap 2 detik
+    // polling tiap 5 detik
     const interval = setInterval(() => {
       fetchControl();
-    }, 2000);
+      fetchSensor();
+    }, 5000);
 
     // cleanup
     return () => clearInterval(interval);
@@ -648,113 +615,75 @@ export default function KolamDetail() {
 
   const fetchMasterFish = async () => {
     try {
-      const res = await fetch(`${API_BASE}/ikan`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error('Gagal fetch master ikan');
-      const data = await res.json();
-      const normalized = (data || []).map((m) => ({
-        ...m,
-        total_kg: m.total_kg ?? m.avg_weight ?? null,
-      }));
-      setMasterFish(normalized || []);
+      const res = await api.get('/ikan');
+      setMasterFish(res.data || []);
     } catch (err) {
-      console.error(err);
-      setMasterFish([]);
-      showAlert('Gagal mengambil data master ikan.');
+      console.error('Gagal fetch master ikan:', err);
     }
   };
 
   const fetchFeeds = async () => {
     try {
-      const res = await fetch(`${API_BASE}/feed`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error('Gagal fetch pakan');
-      const data = await res.json();
-      setFeeds(data || []);
+      const res = await api.get('/feed');
+      setFeeds(res.data || []);
     } catch (err) {
-      console.error(err);
-      setFeeds([]);
-      showAlert('Gagal mengambil data pakan.');
+      console.error('Gagal fetch pakan:', err);
     }
   };
 
   const fetchRefUkuran = async () => {
     try {
-      const res = await fetch(`${API_BASE}/reference/ukuran-ikan`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error('Gagal fetch reference ukuran');
-      const data = await res.json();
-      setRefUkuran(data || []);
+      const res = await api.get('/reference/ukuran-ikan');
+      setRefUkuran(res.data || []);
     } catch (err) {
-      console.error(err);
-      setRefUkuran([]);
+      console.error('Gagal fetch reference ukuran:', err);
     }
   };
 
-  // Ambil master vendor dari beberapa kemungkinan endpoint
   const fetchVendors = async () => {
-    const paths = [`${API_BASE}/reference/vendor`, `${API_BASE}/reference/vendors`, `${API_BASE}/vendor`, `${API_BASE}/vendors`, `${API_BASE}/ref/vendor`, `${API_BASE}/ref/vendors`];
+    const candidates = ['/reference/vendor', '/reference/vendors', '/vendor', '/vendors', '/ref/vendor', '/ref/vendors'];
     try {
       let data = [];
       let ok = false;
-      for (const url of paths) {
+      for (const url of candidates) {
         try {
-          const r = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-          if (r.ok) {
-            data = await r.json();
+          const r = await api.get(url);
+          if (r.status >= 200 && r.status < 300) {
+            data = r.data || [];
             ok = true;
             break;
           }
         } catch (_) {}
       }
       if (!ok) throw new Error('Gagal fetch Business Partner');
-      // Normalisasi minimal: {id, name}
       const normalized = (data || [])
         .map((v) => ({
           id: v.id ?? v.vendor_id ?? v.value ?? v.key,
-          name: v.name ?? v.nama ?? v.label ?? `Vendor #${v.id ?? ''}`,
+          name: v.name ?? v.nama ?? v.label ?? `BP #${v.id ?? ''}`,
         }))
         .filter((v) => v.id);
-      setVendorsRef(normalized);
+      setVendors(normalized);
     } catch (err) {
-      console.error(err);
-      setVendorsRef([]);
-      // Tidak showAlert agar tidak ganggu layar utama. Validasi dilakukan saat submit panen.
+      console.error('Gagal fetch Business Partner:', err);
+      setVendors([]);
     }
   };
 
   const fetchGrowthLogs = async () => {
-    const paths = [`${API_BASE}/growth_log/${id}`, `${API_BASE}/growth-log/${id}`, `${API_BASE}/kolam/${id}/growth_log`, `${API_BASE}/kolam/${id}/growth-log`];
+    const candidates = [`/kolam/${id}/growth`, `/kolam/kolam/${id}/growth`, `/biomassa/${id}`, `/biomassa/kolam/${id}`];
     try {
-      let ok = false;
       let data = [];
-      for (const url of paths) {
+      let ok = false;
+      for (const url of candidates) {
         try {
-          const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-          if (res.ok) {
-            data = await res.json();
-            ok = true;
-            break;
-          }
+          const res = await api.get(url);
+          data = res.data || [];
+          ok = true;
+          break;
         } catch (_) {}
       }
       if (!ok) throw new Error('Gagal fetch data biomassa ikan');
-
-      const chartData = data.map((log) => ({
-        tanggal: new Date(log.tanggal).toLocaleString(),
-        total_kg: log.total_kg ?? null,
-      }));
-
-      const cleaned = chartData.filter((x) => typeof x.total_kg === 'number');
-      if (cleaned.length === 0) {
-        const nowTotalKg = fish.reduce((s, f) => s + Number(f.total_kg || 0), 0);
-        setGrowthLogs([{ tanggal: new Date().toLocaleString(), total_kg: nowTotalKg }]);
-      } else {
-        setGrowthLogs(cleaned);
-      }
+      setGrowthLogs(data);
     } catch (err) {
       console.error(err);
       const nowTotalKg = fish.reduce((s, f) => s + Number(f.total_kg || 0), 0);
@@ -762,27 +691,23 @@ export default function KolamDetail() {
     }
   };
 
-  // 🔹 Ambil aktivitas kolam (termasuk sortir, add fish, panen, dll)
   const fetchAktivitas = async () => {
-    const paths = [`${API_BASE}/aktivitas/kolam/${id}`, `${API_BASE}/aktivitas/${id}`, `${API_BASE}/aktivitas?kolam_id=${id}`, `${API_BASE}/activity/kolam/${id}`, `${API_BASE}/activity/${id}`, `${API_BASE}/activity?kolam_id=${id}`];
+    const candidates = [`/aktivitas/kolam/${id}`, `/kolam/${id}/aktivitas`, `/log/${id}`, `/log/kolam/${id}`];
     try {
-      let ok = false;
       let data = [];
-      for (const url of paths) {
+      let ok = false;
+      for (const url of candidates) {
         try {
-          const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-          if (res.ok) {
-            data = await res.json();
-            ok = true;
-            break;
-          }
+          const res = await api.get(url);
+          data = res.data || [];
+          ok = true;
+          break;
         } catch (_) {}
       }
       if (!ok) throw new Error('Gagal fetch aktivitas kolam');
 
-      const mapped = (data || []).map((a, idx) => {
-        // 🔁 PRIORITAS: waktu event, baru created_at
-        const dtRaw = a.waktu || a.created_at || a.tanggal || a.timestamp || null;
+      const mapped = data.map((a, idx) => {
+        const dtRaw = a.tanggal || a.created_at || a.waktu || null;
         const d = dtRaw ? new Date(dtRaw) : null;
         const meta = a.meta || a.metadata || {};
         return {
@@ -1418,21 +1343,13 @@ export default function KolamDetail() {
         };
         if (jumlahEkorForPayload) payload.jumlah_ekor = jumlahEkorForPayload;
 
-        const res = await fetch(`${API_BASE}/kolam/panen`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-          body: JSON.stringify(payload),
-        });
-        if (!res.ok) {
-          const txt = await res.text();
-          throw new Error(txt || 'Gagal mencatat panen');
-        }
+        await api.post('/kolam/panen', payload);
 
         await Promise.all([fetchKolam(), fetchFish(), fetchFeedingLogs(), fetchGrowthLogs(), fetchAktivitas()]);
         await fetchAllKolams();
         setFormOpen(false);
         setFormData((prev) => ({ ...prev, total_berat_kg: '', jumlah_ekor: '', harga_jual: '', keterangan: '', vendor_id: '' }));
-        showAlert(type === 'penuh' ? 'Panen penuh berhasil dicatat.' : 'Panen parsial berhasil dicatat.', 'success');
+        showAlert('Panen berhasil dicatat.', 'success');
         console.log('>> PANEN payload:', payload);
         return;
       }
@@ -1486,18 +1403,7 @@ export default function KolamDetail() {
         isi_kolam_id: editData.isi_kolam_id ?? null,
       };
 
-      const res = await fetch(`${API_BASE}/pemberian-pakan/${editData.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) {
-        const txt = await res.text();
-        throw new Error(txt || 'Gagal mengubah pemberian pakan/vitamin');
-      }
+      const res = await api.patch(`/pemberian-pakan/${editData.id}`, body);
 
       let deltaKg = 0;
       if (editData._old_jenis === 'pakan' && newJenis === 'pakan') {
@@ -1511,14 +1417,10 @@ export default function KolamDetail() {
       }
 
       if (deltaKg !== 0) {
-        const res2 = await fetch(`${API_BASE}/kolam/${id}/tambah_berat`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-          body: JSON.stringify({ tambahan_kg: Number(deltaKg.toFixed(3)) }),
-        });
-        if (!res2.ok) {
-          const txt = await res2.text();
-          console.warn('Gagal update biomassa kolam:', txt);
+        try {
+          await api.post(`/kolam/${id}/tambah_berat`, { tambahan_kg: Number(deltaKg.toFixed(3)) });
+        } catch (res2Err) {
+          console.warn('Gagal update biomassa kolam:', res2Err);
         }
       }
 

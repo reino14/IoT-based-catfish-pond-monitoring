@@ -48,8 +48,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
-const API_BASE = "http://127.0.0.1:8000";
+import { api } from "../api";
 const PANEN_MAX_ROWS = 10000; // fallback aggregator (selaras Panen.jsx)
 
 /* ================= Helpers ================= */
@@ -352,10 +351,6 @@ export default function Dashboard() {
 
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
-  const headers = useMemo(
-    () => (token ? { Authorization: `Bearer ${token}` } : {}),
-    [token]
-  );
 
   // ===== util aggregator (selaras Panen.jsx) =====
   const computePanenSummaryFromRows = (rows) => {
@@ -412,9 +407,9 @@ export default function Dashboard() {
   const fetchPanenSummaryFromList = async () => {
     try {
       // Mengikuti pola Panen.jsx: kolamId "0" = semua
-      const url = `${API_BASE}/kolam/kolam/0/panen`;
+      const url = "/kolam/kolam/0/panen";
       const params = { page: 1, per_page: PANEN_MAX_ROWS };
-      const res = await axios.get(url, { headers, params });
+      const res = await api.get(url, { params });
 
       const payload = res?.data || {};
       const rows = Array.isArray(payload.items)
@@ -441,9 +436,7 @@ export default function Dashboard() {
   // ---- Panen summary (dengan fallback robust) ----
   const fetchPanenSummaryWithFallback = async () => {
     try {
-      const res = await axios.get(`${API_BASE}/kolam/panen/summary`, {
-        headers,
-      });
+      const res = await api.get("/kolam/panen/summary");
       const data = res.data || {};
       const normalized = {
         total_transaksi: toNum(data.total_transaksi, 0),
@@ -491,9 +484,9 @@ export default function Dashboard() {
     setLoading(true);
     try {
       const [sumRes, txRes, kolamRes] = await Promise.all([
-        axios.get(`${API_BASE}/transaksi/summary`, { headers }),
-        axios.get(`${API_BASE}/transaksi`, { headers }),
-        axios.get(`${API_BASE}/kolam`, { headers }),
+        api.get("/transaksi/summary"),
+        api.get("/transaksi"),
+        api.get("/kolam"),
       ]);
 
       setSummary(
@@ -508,8 +501,7 @@ export default function Dashboard() {
       // Ambil isi kolam per kolam (untuk aset/top-5)
       const fishPairs = await Promise.all(
         kList.map((k) =>
-          axios
-            .get(`${API_BASE}/kolam/${k.id}/fish`, { headers })
+          api.get(`/kolam/${k.id}/fish`)
             .then((r) => [k.id, r.data || []])
             .catch(() => [k.id, []])
         )
@@ -537,6 +529,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchAll();
+    const timer = setInterval(fetchAll, 15000); // Polling data dashboard tiap 15 detik
+    return () => clearInterval(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -644,23 +638,23 @@ export default function Dashboard() {
     return Object.keys(base).map((k) => base[k]);
   }, [transactions]);
 
-  /* ============ Master Control ============ */
   const handleControlAll = async (status) => {
     const action = status === 1 ? "menyalakan" : "mematikan";
     if (!window.confirm(`Apakah Anda yakin ingin ${action} SEMUA pompa?`)) return;
 
     setLoading(true);
     try {
+      // Logic Lebih Efektif: Menggunakan nilai valve yang ada jika tersedia
       const promises = kolamList.map((k) =>
-        axios.post(
-          `${API_BASE}/kolam/control/${k.id}`,
-          { pompa: status, valve: 0 },
-          { headers }
-        )
+        api.post(`/kolam/control/${k.id}`, { 
+          pompa: status, 
+          valve: k.valve ?? 0 
+        })
       );
       await Promise.all(promises);
       setError("");
       alert(`Berhasil ${action} semua pompa.`);
+      fetchAll(); // Refresh data untuk sinkronisasi state
     } catch (err) {
       console.error(err);
       setError(`Gagal ${action} semua pompa. Periksa koneksi backend.`);

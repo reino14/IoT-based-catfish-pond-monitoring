@@ -91,15 +91,26 @@ export default function Sidebar({ open, isDesktop, mobileOpen, onCloseMobile, on
   // ===============================
   const DrawerContent = (
     <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* Spacer AppBar */}
-      <Toolbar />
-
-      {/* Branding mini */}
-      {isDesktop && !open && (
-        <Box sx={{ px: 1.5, pb: 1 }}>
-          <Typography variant="caption" color="text.secondary" align="center" />
-        </Box>
-      )}
+      {/* branding / toggle */}
+      <Box sx={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: open ? 'space-between' : 'center',
+        px: open ? 2 : 0, 
+        py: 1,
+        minHeight: 64
+      }}>
+        {open && (
+          <Typography variant="subtitle1" fontWeight="bold" color="primary">
+            LeleLinker
+          </Typography>
+        )}
+        {isDesktop && (
+          <IconButton onClick={onToggleOpen} size="small" sx={{ border: '1px solid', borderColor: 'divider', borderRadius: 2 }}>
+            {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        )}
+      </Box>
 
       <Divider />
 
@@ -117,34 +128,42 @@ export default function Sidebar({ open, isDesktop, mobileOpen, onCloseMobile, on
           // 🔽 DROPDOWN MENU
           // ===============================
           if (isParent) {
+            const dropdownHeader = (
+              <ListItemButton
+                onClick={() =>
+                  setOpenDropdown((prev) => ({
+                    ...prev,
+                    [item.text]: !prev[item.text],
+                  }))
+                }
+                sx={{ mb: 0.5, borderRadius: 2, px: showText ? 1.5 : 1 }}
+              >
+                <ListItemIcon sx={{ minWidth: 0, mr: showText ? 1.5 : 'auto', justifyContent: 'center' }}>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} sx={{ opacity: showText ? 1 : 0 }} />
+                {showText && (isOpen ? <ExpandLess /> : <ExpandMore />)}
+              </ListItemButton>
+            );
+
             return (
               <Box key={item.text}>
-                <ListItemButton
-                  onClick={() =>
-                    setOpenDropdown((prev) => ({
-                      ...prev,
-                      [item.text]: !prev[item.text],
-                    }))
-                  }
-                  sx={{ mb: 0.5, borderRadius: 2, px: showText ? 1.5 : 1 }}
-                >
-                  <ListItemIcon sx={{ minWidth: 0, mr: showText ? 1.5 : 'auto', justifyContent: 'center' }}>{item.icon}</ListItemIcon>
-
-                  <ListItemText primary={item.text} sx={{ opacity: showText ? 1 : 0 }} />
-
-                  {showText && (isOpen ? <ExpandLess /> : <ExpandMore />)}
-                </ListItemButton>
+                {showTooltip ? (
+                  <Tooltip title={item.text} placement="right">
+                    <Box>{dropdownHeader}</Box>
+                  </Tooltip>
+                ) : (
+                  dropdownHeader
+                )}
 
                 {/* CHILD MENU */}
-                <Collapse in={isOpen} timeout="auto" unmountOnExit  >
+                <Collapse in={isOpen && showText} timeout="auto" unmountOnExit>
                   <List disablePadding>
                     {item.children.map((child) => {
                       const selected = location.pathname.startsWith(child.to);
 
                       return (
                         <ListItemButton key={child.text} component={RouterLink} to={child.to} selected={selected} sx={{ pl: 4, borderRadius: 2, mb: 0.5 }}>
-                          <ListItemIcon>{child.icon}</ListItemIcon>
-                          <ListItemText primary={child.text} />
+                          <ListItemIcon sx={{ minWidth: 0, mr: showText ? 1.5 : 'auto', justifyContent: 'center' }}>{child.icon}</ListItemIcon>
+                          <ListItemText primary={child.text} sx={{ opacity: showText ? 1 : 0 }} />
                         </ListItemButton>
                       );
                     })}
@@ -194,18 +213,8 @@ export default function Sidebar({ open, isDesktop, mobileOpen, onCloseMobile, on
 
       <Divider />
 
-      {/* ===============================
-          🔄 TOGGLE BUTTON (DESKTOP)
-      =============================== */}
-      {isDesktop && (
-        <Box sx={{ p: 1 }}>
-          <Stack direction="row" justifyContent="center">
-            <IconButton onClick={onToggleOpen} size="small" sx={{ border: '1px solid', borderColor: 'divider', borderRadius: 2 }}>
-              {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton>
-          </Stack>
-        </Box>
-      )}
+      {/* Space at bottom */}
+      <Box sx={{ flexShrink: 0, pb: 2 }} />
     </Box>
   );
 

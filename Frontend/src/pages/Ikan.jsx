@@ -30,12 +30,11 @@ import MonitorWeightIcon from "@mui/icons-material/MonitorWeight";
 import NumbersIcon from "@mui/icons-material/Numbers";
 import Layout from "../components/Layout";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../api";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
-const API_BASE = "http://127.0.0.1:8000";
 const LOG_STORAGE_KEY = "ikan_logs_simple";
 
 const formatRp = (v) =>
@@ -284,11 +283,7 @@ export default function Ikan() {
 
   const fetchVendors = async () => {
     try {
-      const token = localStorage.getItem("token");
-      if (!token) return;
-      const res = await axios.get(`${API_BASE}/reference/vendor`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await api.get("/reference/vendor");
       setVendors(res.data || []);
     } catch (e) {
       console.error("Gagal ambil Business Partner:", e);
@@ -299,10 +294,7 @@ export default function Ikan() {
   // fetch reference sizes
   const fetchRefUkuran = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const res = await axios.get(`${API_BASE}/reference/ukuran-ikan`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await api.get("/reference/ukuran-ikan");
       setRefUkuran(res.data || []);
     } catch (err) {
       console.error("Gagal ambil reference ukuran ikan:", err);
@@ -312,10 +304,7 @@ export default function Ikan() {
   const fetchIkan = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem("token");
-      const res = await axios.get(`${API_BASE}/ikan`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await api.get("/ikan");
       // normalisasi: pastikan setiap item punya total_kg (fallback ke avg_weight bila data lama)
       const normalized = (res.data || []).map((it) => {
         const total_kg = it.total_kg ?? it.avg_weight ?? null;
@@ -576,9 +565,7 @@ export default function Ikan() {
           payload.price = null;
         }
 
-        const res = await axios.post(`${API_BASE}/ikan`, payload, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await api.post("/ikan", payload);
         const newItem = {
           ...res.data,
           total_kg: res.data.total_kg ?? res.data.avg_weight ?? null,
@@ -600,16 +587,12 @@ export default function Ikan() {
                 ? `Pembelian ikan ${payload.species || "-"} ukuran ${payload.size} (${payload.quantity} ekor)`
                 : `Pembelian ikan ${payload.species || "-"} ukuran ${payload.size} (${payload.total_kg} kg)`;
 
-            await axios.post(
-              `${API_BASE}/transaksi`,
-              {
-                kategori: "pengeluaran",
-                deskripsi,
-                jumlah: Math.round(cost),
-                tanggal: payload.tanggal || new Date().toISOString().slice(0, 10),
-              },
-              { headers: { Authorization: `Bearer ${token}` } }
-            );
+            await api.post("/transaksi", {
+              kategori: "pengeluaran",
+              deskripsi,
+              jumlah: Math.round(cost),
+              tanggal: payload.tanggal || new Date().toISOString().slice(0, 10),
+            });
           }
         } catch (financeErr) {
           console.warn(
@@ -664,9 +647,7 @@ export default function Ikan() {
         // --- Finance: capture nilai aset sebelum edit
         const oldAsset = computeAssetValue(oldData, refUkuran);
 
-        const res = await axios.put(`${API_BASE}/ikan/${selectedIkanId}`, payload, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await api.put(`/ikan/${selectedIkanId}`, payload);
         const updated = {
           ...res.data,
           total_kg: res.data.total_kg ?? res.data.avg_weight ?? null,
@@ -681,16 +662,12 @@ export default function Ikan() {
 
           if (delta !== 0) {
             const kategori = delta > 0 ? "pengeluaran" : "pemasukan";
-            await axios.post(
-              `${API_BASE}/transaksi`,
-              {
-                kategori,
-                deskripsi: `Penyesuaian nilai stok ikan ${updated.species || "-"} (edit data)`,
-                jumlah: Math.abs(delta),
-                tanggal: updated.tanggal || new Date().toISOString().slice(0, 10),
-              },
-              { headers: { Authorization: `Bearer ${token}` } }
-            );
+            await api.post("/transaksi", {
+              kategori,
+              deskripsi: `Penyesuaian nilai stok ikan ${updated.species || "-"} (edit data)`,
+              jumlah: Math.abs(delta),
+              tanggal: updated.tanggal || new Date().toISOString().slice(0, 10),
+            });
           }
         } catch (financeErr) {
           console.warn(
@@ -750,11 +727,7 @@ export default function Ikan() {
 
         // ====== 1) UPDATE QUANTITY ======
         const payloadQty = { quantity_change: change };
-        const resQty = await axios.put(
-          `${API_BASE}/ikan/${selectedIkanId}/quantity`,
-          payloadQty,
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const resQty = await api.put(`/ikan/${selectedIkanId}/quantity`, payloadQty);
 
         // update qty di state dulu
         setIkanData((prev) =>
@@ -776,11 +749,7 @@ export default function Ikan() {
           const newKg = Math.max(0, Math.round((currKg + sign * usedKg) * 1000) / 1000);
 
           try {
-            const resKg = await axios.put(
-              `${API_BASE}/ikan/${selectedIkanId}`,
-              { total_kg: newKg }, // partial update cukup total_kg saja
-              { headers: { Authorization: `Bearer ${token}` } }
-            );
+            const resKg = await api.put(`/ikan/${selectedIkanId}`, { total_kg: newKg });
 
             // sinkronkan total_kg di state dengan hasil backend
             setIkanData((prev) =>

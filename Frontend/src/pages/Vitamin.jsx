@@ -23,11 +23,10 @@ import {
 } from "@mui/material";
 import Layout from "../components/Layout";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../api";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
 
-const API_BASE = "http://127.0.0.1:8000";
 const LOG_STORAGE_KEY = "vitamin_logs_simple";
 
 // 100% progress = kapasitas stok (KG) untuk vitamin
@@ -251,29 +250,21 @@ export default function Vitamin() {
     saveLogsToStorage(next);
   };
 
-  // ===== Fetchers =====
-  const tokenHeader = () => ({
-    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  });
-
   const fetchVendors = async () => {
     const candidates = [
-      `${API_BASE}/reference/vendor`,
-      `${API_BASE}/reference/vendors`,
-      `${API_BASE}/vendor`,
-      `${API_BASE}/vendors`,
-      `${API_BASE}/ref/vendor`,
-      `${API_BASE}/ref/vendors`,
+      "/reference/vendor",
+      "/reference/vendors",
+      "/vendor",
+      "/vendors",
+      "/ref/vendor",
+      "/ref/vendors",
     ];
     try {
-      const token = localStorage.getItem("token");
-      if (!token) return setVendors([]);
-
       let data = [];
       let ok = false;
       for (const url of candidates) {
         try {
-          const r = await axios.get(url, tokenHeader());
+          const r = await api.get(url);
           if (r.status >= 200 && r.status < 300) {
             data = r.data || [];
             ok = true;
@@ -299,13 +290,8 @@ export default function Vitamin() {
   const fetchFeeds = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem("token");
-      if (!token) {
-        navigate("/");
-        return;
-      }
       setFetching(true);
-      const res = await axios.get(`${API_BASE}/feed`, tokenHeader());
+      const res = await api.get("/feed");
       // hanya vitamin
       const onlyVitamin = (res.data || []).filter(
         (f) => String(f.type || "").toLowerCase() === "vitamin"
@@ -373,11 +359,7 @@ export default function Vitamin() {
       if (selectedFeedId) {
         // update
         const oldData = feeds.find((f) => f.id === selectedFeedId);
-        const res = await axios.put(
-          `${API_BASE}/feed/${selectedFeedId}`,
-          payload,
-          headers
-        );
+        const res = await api.put(`/feed/${selectedFeedId}`, payload);
         setFeeds((prev) =>
           prev.map((f) => (f.id === selectedFeedId ? res.data : f))
         );
@@ -387,7 +369,7 @@ export default function Vitamin() {
         addLog("Update", oldData, res.data, null, logTimestamp);
       } else {
         // create
-        const res = await axios.post(`${API_BASE}/feed`, payload, headers);
+        const res = await api.post("/feed", payload);
         setFeeds((prev) => [res.data, ...prev]);
 
         const logTimestamp =
@@ -398,16 +380,12 @@ export default function Vitamin() {
         try {
           const amount = totalPrice;
           if (amount > 0) {
-            await axios.post(
-              `${API_BASE}/transaksi`,
-              {
-                kategori: "pengeluaran",
-                deskripsi: `Pembelian awal vitamin ${res.data.name} (${qty} kg)`,
-                jumlah: amount,
-                tanggal: formData.created_at || todayStr,
-              },
-              headers
-            );
+            await api.post("/transaksi", {
+              kategori: "pengeluaran",
+              deskripsi: `Pembelian awal vitamin ${res.data.name} (${qty} kg)`,
+              jumlah: amount,
+              tanggal: formData.created_at || todayStr,
+            });
           }
         } catch (financeErr) {
           console.warn(
@@ -471,12 +449,10 @@ export default function Vitamin() {
   };
 
   const handleDelete = async (id) => {
-    const token = localStorage.getItem("token");
-    if (!token) return;
     const oldData = feeds.find((f) => f.id === id);
     try {
       setFetching(true);
-      await axios.delete(`${API_BASE}/feed/${id}`, tokenHeader());
+      await api.delete(`/feed/${id}`);
       setFeeds((prev) => prev.filter((f) => f.id !== id));
       addLog("Delete", oldData);
       if (selectedFeedId === id) setSelectedFeedId(null);
@@ -507,17 +483,13 @@ export default function Vitamin() {
 
       const totalQty = safeNum(feed.quantity_kg) + qtyChange;
 
-      const resFeed = await axios.put(
-        `${API_BASE}/feed/${selectedFeedId}`,
-        {
-          ...feed,
-          quantity_kg: totalQty,
-          vendor_id: feed.vendor?.id ?? feed.vendor_id ?? null,
-          type: "Vitamin",
-          created_at: feed.created_at ?? null,
-        },
-        tokenHeader()
-      );
+      const resFeed = await api.put(`/feed/${selectedFeedId}`, {
+        ...feed,
+        quantity_kg: totalQty,
+        vendor_id: feed.vendor?.id ?? feed.vendor_id ?? null,
+        type: "Vitamin",
+        created_at: feed.created_at ?? null,
+      });
       setFeeds((prev) =>
         prev.map((f) => (f.id === selectedFeedId ? resFeed.data : f))
       );
@@ -530,16 +502,12 @@ export default function Vitamin() {
         const pricePerKg = safeNum(feed.price_per_kg);
         const amount = qtyChange * pricePerKg;
         if (amount > 0) {
-          await axios.post(
-            `${API_BASE}/transaksi`,
-            {
-              kategori: "pengeluaran",
-              deskripsi: `Tambah stok vitamin ${feed.name} (${qtyChange} kg)`,
-              jumlah: amount,
-              tanggal: eventDateStr,
-            },
-            tokenHeader()
-          );
+          await api.post("/transaksi", {
+            kategori: "pengeluaran",
+            deskripsi: `Tambah stok vitamin ${feed.name} (${qtyChange} kg)`,
+            jumlah: amount,
+            tanggal: eventDateStr,
+          });
         }
       } catch (financeErr) {
         console.warn(

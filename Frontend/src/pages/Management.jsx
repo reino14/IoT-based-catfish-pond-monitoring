@@ -42,10 +42,7 @@ import SelectAllIcon from "@mui/icons-material/SelectAll";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import CloseIcon from "@mui/icons-material/Close";
 import Layout from "../components/Layout";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
-const API_BASE = "http://127.0.0.1:8000";
+import { api } from "../api";
 
 // === helpers ===
 const getKolamName = (k) => k?.nama || k?.name || `Kolam #${k?.id || "?"}`;
@@ -179,19 +176,11 @@ export default function Management() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // API headers
-  const authHeader = () => {
-    const token = localStorage.getItem("token");
-    return { Authorization: `Bearer ${token}` };
-  };
-
   // API calls
   const fetchPetani = async () => {
     try {
       setTableLoading(true);
-      const res = await axios.get(`${API_BASE}/users`, {
-        headers: authHeader(),
-      });
+      const res = await api.get("/users");
       setPetani(res.data || []);
     } catch (e) {
       console.error(e);
@@ -203,9 +192,7 @@ export default function Management() {
 
   const fetchKolam = async () => {
     try {
-      const res = await axios.get(`${API_BASE}/kolam`, {
-        headers: authHeader(),
-      });
+      const res = await api.get("/kolam");
       setKolam(res.data || []);
       return res.data || [];
     } catch (e) {
@@ -252,14 +239,10 @@ export default function Management() {
       };
       if (form.pwd?.trim()) payload.password = form.pwd;
 
-      await axios.put(`${API_BASE}/petani/${selectedPetani.id}`, payload, {
-        headers: authHeader(),
-      });
+      await api.put(`/petani/${selectedPetani.id}`, payload);
       
       if (form.role !== selectedPetani.role) {
-        await axios.patch(`${API_BASE}/users/${selectedPetani.id}/role`, { role: form.role }, {
-          headers: authHeader(),
-        });
+        await api.patch(`/users/${selectedPetani.id}/role`, { role: form.role });
       }
 
       setOpenEdit(false);
@@ -294,15 +277,12 @@ export default function Management() {
       );
       await Promise.all(
         assignedKolam.map((k) =>
-          axios.delete(
-            `${API_BASE}/unassign-petani?petani_id=${deleteTarget.id}&kolam_id=${k.id}`,
-            { headers: authHeader() }
+          api.delete(
+            `/unassign-petani?petani_id=${deleteTarget.id}&kolam_id=${k.id}`
           )
         )
       );
-      await axios.delete(`${API_BASE}/petani/${deleteTarget.id}`, {
-        headers: authHeader(),
-      });
+      await api.delete(`/petani/${deleteTarget.id}`);
       setOpenConfirm(false);
       setDeleteTarget(null);
       await Promise.all([fetchPetani(), fetchKolam()]);
@@ -351,16 +331,14 @@ export default function Management() {
     try {
       if (!currentlyAssigned) {
         // Assign one
-        await axios.post(
-          `${API_BASE}/assign-petani-multi`,
-          { petani_id: selectedPetani.id, kolam_ids: [kolamId] },
-          { headers: authHeader() }
+        await api.post(
+          "/assign-petani-multi",
+          { petani_id: selectedPetani.id, kolam_ids: [kolamId] }
         );
       } else {
         // Unassign one
-        await axios.delete(
-          `${API_BASE}/unassign-petani?petani_id=${selectedPetani.id}&kolam_id=${kolamId}`,
-          { headers: authHeader() }
+        await api.delete(
+          `/unassign-petani?petani_id=${selectedPetani.id}&kolam_id=${kolamId}`
         );
       }
       const freshKolam = await fetchKolam();
@@ -409,10 +387,9 @@ export default function Management() {
     });
 
     try {
-      await axios.post(
-        `${API_BASE}/assign-petani-multi`,
-        { petani_id: selectedPetani.id, kolam_ids: idsToAssign },
-        { headers: authHeader() }
+      await api.post(
+        "/assign-petani-multi",
+        { petani_id: selectedPetani.id, kolam_ids: idsToAssign }
       );
       const freshKolam = await fetchKolam();
       setAssignState(rebuildAssignState(selectedPetani, freshKolam));
@@ -453,9 +430,8 @@ export default function Management() {
     try {
       await Promise.all(
         idsToRemove.map((id) =>
-          axios.delete(
-            `${API_BASE}/unassign-petani?petani_id=${selectedPetani.id}&kolam_id=${id}`,
-            { headers: authHeader() }
+          api.delete(
+            `/unassign-petani?petani_id=${selectedPetani.id}&kolam_id=${id}`
           )
         )
       );
