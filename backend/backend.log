@@ -93,3 +93,8 @@ INFO:     127.0.0.1:59594 - "GET /reference/vendor HTTP/1.1" 200 OK
 INFO:     127.0.0.1:59593 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
 INFO:     127.0.0.1:59599 - "GET /reference/jenis-kolam HTTP/1.1" 200 OK
 INFO:     127.0.0.1:59598 - "GET /reference/ukuran-ikan HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [40399]
+INFO:     Stopping reloader process [40391]

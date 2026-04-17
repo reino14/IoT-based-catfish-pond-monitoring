@@ -644,6 +644,31 @@ export default function Dashboard() {
     return Object.keys(base).map((k) => base[k]);
   }, [transactions]);
 
+  /* ============ Master Control ============ */
+  const handleControlAll = async (status) => {
+    const action = status === 1 ? "menyalakan" : "mematikan";
+    if (!window.confirm(`Apakah Anda yakin ingin ${action} SEMUA pompa?`)) return;
+
+    setLoading(true);
+    try {
+      const promises = kolamList.map((k) =>
+        axios.post(
+          `${API_BASE}/kolam/control/${k.id}`,
+          { pompa: status, valve: 0 },
+          { headers }
+        )
+      );
+      await Promise.all(promises);
+      setError("");
+      alert(`Berhasil ${action} semua pompa.`);
+    } catch (err) {
+      console.error(err);
+      setError(`Gagal ${action} semua pompa. Periksa koneksi backend.`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   /* ====================== UI ====================== */
   return (
     <Layout>
@@ -658,13 +683,30 @@ export default function Dashboard() {
           <Typography variant="h5" fontWeight={800} sx={{ fontSize: { xs: 20, sm: 24 } }}>
             Dashboard
           </Typography>
-          <Stack direction="row" spacing={1} sx={{ width: { xs: "100%", sm: "auto" } }}>
+          <Stack direction="row" spacing={1} sx={{ width: { xs: "100%", sm: "auto" }, flexWrap: "wrap", gap: 1 }}>
+            <Button
+              color="success"
+              size="small"
+              variant="contained"
+              onClick={() => handleControlAll(1)}
+              sx={{ fontWeight: "bold" }}
+            >
+              Nyalakan Semua
+            </Button>
+            <Button
+              color="error"
+              size="small"
+              variant="contained"
+              onClick={() => handleControlAll(0)}
+              sx={{ fontWeight: "bold" }}
+            >
+              Matikan Semua
+            </Button>
             <Button
               startIcon={<RefreshIcon />}
               size="small"
               variant="outlined"
               onClick={fetchAll}
-              sx={{ width: { xs: "100%", sm: "auto" } }}
             >
               Refresh
             </Button>
